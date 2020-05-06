@@ -4,9 +4,9 @@
       <textarea name="body" class="w-full p-8" placeholder="What are you going to tweet today ?" required></textarea>
       <hr class="my-4">
       <footer class="flex justify-between">
-        <img></img>
-      <button type="submit" class="bg-blue-500 rounded-lg shadow py-2 px-2 text-white">Create Tweet</button>
-    </footer>
+        <img class="rounded-full mr-2 border border-b-gray-700" src="{{auth()->user()->avatar}}" alt="" width="40">
+        <button type="submit" class="bg-blue-500 rounded-lg shadow py-2 px-2 text-white">Create Tweet</button>
+      </footer>
   </form>
   @error('body')
     <p class="text-red-500 text-sm mt-2">{{$message}}</p>

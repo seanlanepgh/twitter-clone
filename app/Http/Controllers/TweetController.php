@@ -7,6 +7,15 @@ use App\Tweet;
 
 class TweetController extends Controller
 {
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+      $this->middleware('auth');
+  }
    public function store() {
 
      $attributes = request()->validate(['body' => 'required|max:255']);
@@ -15,6 +24,13 @@ class TweetController extends Controller
        'body' => $attributes['body'],
      ]);
 
-     return redirect('/home');
+     return redirect(route('home'));
+   }
+   
+   public function index()
+   {
+       return view('tweets.index', [
+         'tweets' => auth()->user()->timeline(),
+         ]);
    }
 }

@@ -17,7 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/tweets', 'TweetController@index')->name('home');
 Route::post('/tweets', 'TweetController@store');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/profiles/{user:username}/follow', 'FollowController@store')->name('follow');
+Route::get('/profiles/{user:username}/edit', 'ProfileController@edit')->middleware('can:edit,user');
+Route::patch('/profiles/{user:username}', 'ProfileController@update')->middleware('can:edit,user');
+Route::get('/profiles/{user:username}', 'ProfileController@show')->name('profile');
+Route::get('/explore','ExploreController@index');
+Auth::routes();
