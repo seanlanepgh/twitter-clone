@@ -3,9 +3,9 @@
     @csrf
       <textarea name="body" class="w-full p-8" placeholder="What are you going to tweet today ?" required></textarea>
       <hr class="my-4">
-      <footer class="flex justify-between">
-        <img class="rounded-full mr-2 border border-b-gray-700" src="{{auth()->user()->avatar}}" alt="" width="40">
-        <button type="submit" class="bg-blue-500 rounded-lg shadow py-2 px-2 text-white">Create Tweet</button>
+      <footer class="flex justify-between items-center">
+        <img class="rounded-full mr-2 border border-b-gray-700" src="{{auth()->user()->avatar}}" alt="" style="width:50px;height:50px;">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-600 rounded-lg shadow px-10 text-sm text-white h-10">Create Tweet</button>
       </footer>
   </form>
   @error('body')

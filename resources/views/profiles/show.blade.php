@@ -2,7 +2,7 @@
     <header class="mb-6 relative">
       <div class="relative">
       <img src="/images/default-banner.png" class="rounded" style="width:700px; height:200px;">
-      <img src="{{$user->avatar}}" alt="" class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2 bg-gray-400 border border-gray-400" style="left:50%" width="150">
+      <img src="{{$user->avatar}}" alt="" class="rounded-full mr-2 absolute bottom-0 transform -translate-x-1/2 translate-y-1/2 bg-gray-400 border border-gray-400" style="left:50%; width:150px; height:150px;">
       </div>
       <div class="flex justify-between items-center mb-6">
             <div style="max-width: 270px">
@@ -28,6 +28,6 @@
     </header>
 
     @include('_timeline', [
-      'tweets' => $user->tweets
+      'tweets' => $tweets
     ])
 </x-app>

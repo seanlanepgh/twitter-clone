@@ -36,15 +36,21 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
     public function getAvatarAttribute($value) {
-      return asset($value ?: '/images/default-avatar.png');
+      if(isset($value)){
+          return asset('storage/'.$value);
+      }
+      return asset('/images/default-avatar.png');
     }
+
     public function setPasswordAttribute($value){
       $this->attributes['password'] = bcrypt($value);
     }
+
     public function timeline() {
         $friends = $this->follows()->pluck('id');
-        return Tweet::whereIn('user_id',$friends)->orWhere('user_id', $this->id)->latest()->get();
+        return Tweet::whereIn('user_id',$friends)->orWhere('user_id', $this->id)->withLikes()->latest()->paginate(50);
     }
 
     public function tweets(){
