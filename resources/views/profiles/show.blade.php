@@ -23,7 +23,7 @@
             </div>
         </div>
       <p class="text-sm">
-        Expedita corrupti perferendis minus quo tempore qui vero ipsum.
+        {{ $user->description }}
       </p>
     </header>
 
