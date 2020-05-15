@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/tweets', 'TweetController@index')->name('home');
 Route::post('/tweets', 'TweetController@store');
+Route::delete('/tweets/{tweet}/delete', 'TweetController@destroy');
 Route::post('/tweets/{tweet}/like', 'TweetLikesController@store');
 Route::delete('/tweets/{tweet}/like', 'TweetLikesController@destroy');
 
